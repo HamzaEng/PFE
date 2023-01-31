@@ -636,6 +636,11 @@ input:focus {
   width: 60px;
 }
 
+.download__img:hover {
+  transition: .5s;
+  transform: scale(1.1);
+}
+
 
 /* ETUDIANT */
 
