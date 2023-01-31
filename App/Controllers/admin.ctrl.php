@@ -210,25 +210,73 @@ if(isset($_POST['removePf'])){
     $_SESSION['removePf'] = $removePf;
 }
 
-
 // voir les notes des etudiants 
 
 // les matiers de chque filiere et annee  
-$SRI = array("ARAB","FRAN","ENGL","MATH","COMM","SYST","RESE","DEVE","LINU");
-$SRI1 = array(...$SRI,"ARCH","ECON");
-$SRI2 = array(...$SRI,"SECU");
+$sri = $mt = $mcw = $sri1 = $mt1 = $mcw1 = $sri2 = $mt2 = $mcw2 = [];
+foreach($commun as $mat => $cof) {
+    array_push($sri, $mat);
+    array_push($mt, $mat);
+    array_push($mcw, $mat);
+}
+foreach($SRI as $mat=>$cof) {
+    array_push($sri, $mat);
+}
 
+foreach($MT as $mat=>$cof) {
+    array_push($mt, $mat);
+}
 
+foreach($MCW as $mat=>$cof) {
+    array_push($mcw, $mat);
+}
+
+foreach($SRI1 as $mat=>$cof) {
+    array_push($sri1, $mat);   
+}
+array_push($sri1, ...$sri);
+array_push($sri2, ...$sri);
+
+foreach($MT1 as $mat=>$cof) {
+    array_push($mt1, $mt);   
+}
+
+foreach($MT2 as $mat=>$cof) {
+    array_push($mt2, $mat);   
+}
+foreach($MCW1 as $mat=>$cof) {
+    array_push($mcw1, $mat);   
+}
+
+array_push($mcw1, ...$mcw);
+array_push($mcw2, ...$mcw);
 
 if(isset($_POST['downloadNotes'])){
     $filiere = $_POST['fl'];
     $semestre = $_POST['semestre'];
     $file = "../../uploads/excel/Notes.csv";
     $notes = Directeur::getNotes($filiere);
-    if($filiere == "SRI1")
-        $table = $SRI1;
-    else
-        $table = $SRI2;
+    switch ($filiere) {
+        case 'SRI1':
+            $table = $sri1;
+            break;
+        case 'SRI2':
+            $table = $sri2;
+            break;
+        case 'MT1':
+            $table = $mt1;
+            break;
+        case 'MT2':
+            $table = $mt2;
+            break;
+        case 'MCW1':
+            $table = $mcw1;
+            break;
+        case 'MCW2':
+            $table = $mcw2;
+            break;
+    }
+    
     if(!empty($notes)) {
         SpreadSheet::filterSpread($file, $table, $notes, $semestre);
         downloadFile($file);
