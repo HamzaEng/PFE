@@ -1,0 +1,9 @@
+Options All -Indexes
+Options +MultiViews
+
+RewriteEngine On 
+
+RewriteBase /PFE/
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
