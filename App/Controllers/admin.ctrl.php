@@ -234,11 +234,9 @@ foreach($MCW as $mat=>$cof) {
 foreach($SRI1 as $mat=>$cof) {
     array_push($sri1, $mat);   
 }
-array_push($sri1, ...$sri);
-array_push($sri2, ...$sri);
 
 foreach($MT1 as $mat=>$cof) {
-    array_push($mt1, $mt);   
+    array_push($mt1, $mat);   
 }
 
 foreach($MT2 as $mat=>$cof) {
@@ -248,6 +246,10 @@ foreach($MCW1 as $mat=>$cof) {
     array_push($mcw1, $mat);   
 }
 
+array_push($sri1, ...$sri);
+array_push($sri2, ...$sri);
+array_push($mt1, ...$mt);
+array_push($mt2, ...$mt);
 array_push($mcw1, ...$mcw);
 array_push($mcw2, ...$mcw);
 
