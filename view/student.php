@@ -25,7 +25,7 @@ $student = $_SESSION['student'];
 @$sem2 = $_SESSION['sem2'];
 $branche = $student[0]['fl'];
 
-if (empty($year)) {
+if (empty($year) && empty($sem)) {
   $year = 0;
   $sem = 1;
 }
@@ -70,17 +70,16 @@ if ($branche == 'SRI1') {
         <h4 class="etudiant__h4">Nom: <small><?php echo $student[0]['nom'] ?></small></h4>
         <h4 class="etudiant__h4">Prenom: <small> <?php echo $student[0]['prenom'] ?></small></h4>
         <h4 class="etudiant__h4">Filière: <small><?php echo Data::getAbreviate($student[$year]['fl'], $branchesAnne) ?></small></h4>
-        <h4 class="etudiant__h4">L'année scolaire: <small><?php echo date("Y") . "-" . date("Y") + 1; ?></small></h4>
+        <h4 class="etudiant__h4">L'année scolaire: <small><?php echo (date("Y") + 1)."-" . date("Y"); ?></small></h4>
         <h4 class="etudiant__h4">Nombre des etudiants: <small><?php echo Student::getNumberOfStudents($branche); ?></small> </h4>
       </div>
     </div>
     <form action="../App/Controllers/student.ctrl.php" method="POST">
       <div class="formulaire__item">
         <select name="anne" class="prof__select">
-          <option value="anne1"><?php echo $student[0]['ANSC'] . "/" . $student[0]['ANSC'] + 1 ?></option>
+          <option value="anne1"><?php echo $student[0]['ANSC'] . "/" . ($student[0]['ANSC'] + 1) ?></option>
           <?php if (isset($student[1]['ANSC'])) { ?>
-            <option value="anne2"> <?php echo $student[1]['ANSC'] + 1 . "/" . $student[1]['ANSC'] + 2 /* j'ajoute 1 en plus pour voir la difference mais en l'utilisation je n'ai pas besoin de l'ajouter*/;
-                                  } ?>
+            <option value="anne2"> <?php echo ($student[1]['ANSC'] + 1) . "/" . ($student[1]['ANSC'] + 2);} ?>
             </option>
         </select>
         <select name="semestre" class="prof__select">
