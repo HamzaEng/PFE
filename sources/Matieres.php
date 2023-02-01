@@ -54,36 +54,12 @@ $MCW1 = array(
 );
 
 
-$Sri1Coffs = array(
-  ...$commun,
-  ...$SRI,
-  ...$SRI1
-);
-$Sri2Coffs = array(
-  ...$commun,
-  ...$SRI
-);
 
-$Mt1Coffs = array(
-  ...$commun,
-  ...$MT,
-  ...$MT1
-);
+$Sri1Coffs = array_merge($commun, $SRI, $SRI1);
+$Sri2Coffs = array_merge($commun, $SRI);
+$Mt1Coffs = array_merge($commun, $MT, $MT1);
+$Mt2Coffs = array_merge($commun, $MT,$MT2);
+$Mcw1Coffs = array_merge($commun, $MCW, $MCW1);
+$Mcw2Coffs = array_merge($commun, $MCW);
 
-$Mt2Coffs = array(
-  ...$commun,
-  ...$MT,
-  ...$MT2
-);
-
-$Mcw1Coffs = array(
-  ...$commun,
-  ...$MCW,
-  ...$MCW1
-);
-
-$Mcw2Coffs = array(
-  ...$commun,
-  ...$MCW
-);
 
