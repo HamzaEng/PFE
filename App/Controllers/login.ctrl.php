@@ -31,21 +31,21 @@ if(isset($_POST['login'])){
         //admin login 
         if(Directeur::directeurLogin($username,$password)){// fonction retourn boolen 
             $_SESSION['adminValide'] = 'oui';
-            header("location:../../view/admin.php");
+            header("location:../../view/admin");
             exit();
         }
         //etudiant login 
         elseif(!empty($arrs)){
             $_SESSION['studentValide'] = "oui";
             $_SESSION['student'] = $arrs;
-            header("location:../../view/student.php");
+            header("location:../../view/student");
             exit();
         }
         // professeur login 
         elseif(!empty($arrp)){
             $_SESSION['profValide'] = "oui";
             $_SESSION['prof'] = $arrp;
-            header("location:../../view/prof.php");
+            header("location:../../view/prof");
             exit();
         }
             else{
@@ -53,7 +53,7 @@ if(isset($_POST['login'])){
             }
     }
     $_SESSION['loginErrors'] = $errors;
-    header("location:../../view/login.php");
+    header("location:../../view/login");
 }
 
 
