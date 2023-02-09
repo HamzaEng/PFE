@@ -4,8 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 class Directeur{
-    const username = "309cd3800aacbd003ac36199fa537295";// mohamed
-    const password =  "21232f297a57a5a743894a0e4a801fc3";// admin
+    const username = "309cd3800aacbd003ac36199fa537295";
+    const password =  "21232f297a57a5a743894a0e4a801fc3";
     static public function directeurLogin($username, $password){
         if(md5($username) == self::username && md5($password) == self::password)
             return true;
