@@ -123,7 +123,7 @@ $errors = array(
     'pssCf'=>'',
     'message'=>''
 );
-$matieres = ['','','','']; // un professeur ne peut etudier que 4 matieres au maximum 
+$matieres = []; // un professeur ne peut etudier que 4 matieres au maximum 
 $nom = $prenom = $cin = $pass = $passConf = '';
 
 if(isset($_POST['addProfs'])){
