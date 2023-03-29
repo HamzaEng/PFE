@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 include_once('../../sources/Matieres.php');
 $student = $_SESSION['student'];
@@ -24,7 +20,7 @@ function getMoyenneExam($matieres, $annee, $student)
     $sumCoffs = sumCoffecients($matieres);
     foreach ($matieres as $matiere => $coffecient) {
         if (!isset($student[$annee][$matiere . "E"]))
-            return NULL;
+            return;
         else
             $total += $student[$annee][$matiere . "E"] * $coffecient;
     }
@@ -39,7 +35,7 @@ function getMoyenneOfmatieres($anee, $matieres, $student)
         for ($sem = 1; $sem <= 2; $sem++) {
             for ($exam = 1; $exam <= 2; $exam++) {
                 if (!isset($student[$anee][$mat . $exam . "S" . $sem]))
-                    return NULL;
+                    return;
                 else
                     $total += $student[$anee][$mat . $exam . "S" . $sem];
             }
@@ -57,7 +53,7 @@ function getMoyenneOfSemestre($matieres, $annee, $semestre, $student)
         $sum = 0;
         for ($exam = 1; $exam <= 2; $exam++) {
             if (!isset($student[$annee][$mat . $exam . "S" . $semestre]))
-                return null;
+                return;
             $sum += $student[$annee][$mat . $exam . "S" . $semestre];
         }
         $total += ($sum / 2) * $coff;
